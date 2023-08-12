@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="calculator" id="main">
+        <input type="text" value="0" placeholder="Calculator" name="display" id="inputbox" onkeydown="return false" c>
+        <DIV>
+            <button onclick="clicked(this)" class="operator">AC</button>
+            <button onclick="clicked(this)" class="operator">DEL</button>
+            <button onclick="clicked(this)" class="operator">%</button>
+            <button onclick="clicked(this)" class="operator">/</button>
+        </DIV>
+        <DIV>
+            <button onclick="clicked(this)">7</button>
+            <button onclick="clicked(this)" >8</button>
+            <button onclick="clicked(this)"  value="9" >9</button>
+            <button onclick="clicked(this)"  class="operator">*</button>
+        </DIV>
+        <DIV>
+            <button onclick="clicked(this)" >4</button>
+            <button onclick="clicked(this)" >5</button>
+            <button onclick="clicked(this)" >6</button>
+            <button onclick="clicked(this)"  class="operator">-</button>
+        </DIV>
+        <DIV>
+            <button onclick="clicked(this)" >1</button>
+            <button onclick="clicked(this)" >2</button>
+            <button onclick="clicked(this)" >3</button>
+            <button onclick="clicked(this)"  class="operator">+</button>
+        </DIV>
+        <DIV>
+            <button onclick="clicked(this)" >00</button>
+            <button onclick="clicked(this)" >0</button>
+            <button onclick="clicked(this)" >.</button>
+            <button onclick="clicked(this)" class="equalbtn">=</button>
+        </DIV>
+    </div>
+    <script>
+        let inputbox = document.getElementById("inputbox");
+        // console.log(input.setAttribute("value","kello"))
+        // answer="kelo"
+        // inputbox.disabled = true;
+        let clickbutton = document.getElementById("main");
+        // console.log(clickbutton.children[2].children[0])
+        string="";
+        let equalToPressed = false
+        function clicked(btn){
+            // inputbox.textContent = "hi"
+            if(equalToPressed){
+                equalToPressed = false
+                string=""
+            }
+            if(btn.textContent == "0"){
+                // console.log("yes")
+                string+="0";
+                console.log(string);
+            }
+            else if(btn.textContent == "1"){
+                string+="1";
+                console.log(string);
+            }
+            else if(btn.textContent == "2"){
+                string+="2";
+                console.log(string);
+            }
+            else if(btn.textContent == "3"){
+                string+="3";
+                console.log(string);
+            }
+            else if(btn.textContent == "4"){
+                string+="4";
+                console.log(string);
+            }
+            else if(btn.textContent == "5"){
+                string+="5";
+                console.log(string);
+            }
+            else if(btn.textContent == "6"){
+                string+="6";
+                console.log(string);
+            }
+            else if(btn.textContent == "7"){
+                string+="7";
+                console.log(string);
+            }
+            else if(btn.textContent == "8"){
+                string+="8";
+                console.log(string);
+            }
+            else if(btn.textContent == "9"){
+                string+="9";
+                console.log(string);
+            }
+            
+            else if(btn.textContent == "."){
+                flag=0
+                for(let i=string.length-1;i>=0;i--){
+                    if("%-/+*".includes(string[i])){
+                        break;
+                    }
+                    else if(string[i]=="."){
+                        flag=1
+                    }
+                }
+                if(flag==0){
+                    string+=".";
+                }
+                console.log(string);
+            }
+            
+            
+            if(string!=""){
+                if(btn.textContent=="="){
+                    if(string=="."){
+                        string=""
+                    }
+                    else{
+                        equalToPressed = true
+                        let num=eval(string)
+                        if(Number.isInteger(num)){
+                            console.log("yes")
+                        }
+                        else {
+                            num= num.toFixed(3);
+                        }
+                        // console.log(no);
+                        string=num;
+                        console.log("=")
+                        console.log(inputbox.value)
+                    }
+                    
+                }
+                else if(btn.textContent == "00"){
+                    string+="00";
+                    console.log(string);
+                }
+                else if(btn.textContent == "AC"){
+                    string="0";
+                    console.log(string+"AC");
+                }
+                else if(btn.textContent == "DEL"){
+                    console.log("DEL")
+                    console.log(string);
+                    string=string.slice(0,-1)
+                }
+                else if(btn.textContent == "+"){
+                    string+="+";
+                    console.log(string);
+                }
+                else if(btn.textContent == "-"){
+                    string+="-";
+                    console.log(string);
+                }
+                else if(btn.textContent == "*"){
+                    string+="*";
+                    console.log(string);
+                }
+                else if(btn.textContent == "/"){
+                    string+="/";
+                    console.log(string);
+                }
+                else if(btn.textContent == "%"){
+                    string+="%";
+                    console.log(string);
+                }
+            }
+            
+            console.log(inputbox)
+            document.getElementById("inputbox").value=string;
+            // document.querySelector("input").value = string;
+        }
+        
+
+    </script>
+</body>
+</html>
